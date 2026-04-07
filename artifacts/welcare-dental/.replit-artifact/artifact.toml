@@ -19,7 +19,7 @@ run = "pnpm --filter @workspace/welcare-dental run dev"
 
 [services.production]
 build = [ "pnpm", "--filter", "@workspace/welcare-dental", "run", "build" ]
-publicDir = "artifacts/welcare-dental/dist/public"
+publicDir = "artifacts/welcare-dental/dist"
 serve = "static"
 
 [[services.production.rewrites]]
