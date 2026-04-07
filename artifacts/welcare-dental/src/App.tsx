@@ -53,20 +53,7 @@ function Navbar() {
         {/* Desktop Links */}
         <div className="hide-mobile" style={{ display: "flex", gap: "36px", alignItems: "center" }}>
           {navLinks.map((l) => (
-            <a
-              key={l.href}
-              href={l.href}
-              style={{
-                textDecoration: "none",
-                fontSize: "13px",
-                fontWeight: 500,
-                color: "var(--warm-dark)",
-                letterSpacing: "0.04em",
-                transition: "color 0.2s",
-              }}
-              onMouseEnter={(e) => (e.currentTarget.style.color = "var(--gold-dark)")}
-              onMouseLeave={(e) => (e.currentTarget.style.color = "var(--warm-dark)")}
-            >
+            <a key={l.href} href={l.href} className="nav-link">
               {l.label}
             </a>
           ))}
@@ -353,7 +340,7 @@ function Services() {
         {/* Grid */}
         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(260px, 1fr))", gap: "24px" }}>
           {services.map((service, i) => (
-            <div key={service.name} className={`service-card reveal delay-${((i % 4) + 1) * 100}`}>
+            <div key={service.name} className={`service-card reveal delay-${[0, 80, 160, 240, 0, 80, 160, 240][i] ?? 0}`}>
               <div className="service-icon-wrap">
                 <span style={{ fontSize: "24px" }}>{service.icon}</span>
               </div>
@@ -426,7 +413,7 @@ function WhyChooseUs() {
 
         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(280px, 1fr))", gap: "24px" }}>
           {features.map((f, i) => (
-            <div key={f.title} className={`feature-block reveal delay-${((i % 4) + 1) * 100}`}>
+            <div key={f.title} className={`feature-block reveal delay-${[0, 100, 200, 300][i] ?? 0}`}>
               <div style={{
                 width: "60px",
                 height: "60px",
@@ -623,7 +610,7 @@ function Reviews() {
           {reviews.map((r, i) => (
             <div
               key={r.name}
-              className={`testimonial-card reveal delay-${((i % 3) + 1) * 100}`}
+              className={`testimonial-card reveal delay-${[0, 100, 200, 0, 100][i] ?? 0}`}
               onClick={() => setCurrent(i)}
               style={{ cursor: "pointer", borderColor: i === current ? "rgba(212,175,55,0.4)" : undefined }}
             >
