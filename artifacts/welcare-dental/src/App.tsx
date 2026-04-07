@@ -455,13 +455,6 @@ function WhyChooseUs() {
 
 // ===================== GALLERY =====================
 function Gallery() {
-  const images = [
-    { src: "/clinic-interior.jpg", label: "Modern Treatment Room", size: "large" },
-    { src: "/dental-procedure.jpg", label: "Expert Care", size: "normal" },
-    { src: "/doctor-photo.jpg", label: "Dr. Ziauddin Qazi", size: "normal" },
-    { src: "/clinic-exterior.jpg", label: "Welcare Dental Hub", size: "large" },
-  ];
-
   return (
     <section id="gallery" style={{ padding: "100px 0", background: "var(--ivory)" }}>
       <div style={{ maxWidth: "1200px", margin: "0 auto", padding: "0 28px" }}>
@@ -479,36 +472,57 @@ function Gallery() {
           </p>
         </div>
 
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gridTemplateRows: "280px 280px", gap: "16px" }} className="gallery-grid reveal">
-          <div className="gallery-item" style={{ gridRow: "1 / 3", gridColumn: "1 / 2" }}>
+        {/* Row 1: large left + 2 right */}
+        <div style={{ display: "grid", gridTemplateColumns: "1.4fr 1fr 1fr", gridTemplateRows: "300px", gap: "16px", marginBottom: "16px" }} className="gallery-row reveal">
+          <div className="gallery-item">
             <img src="/clinic-interior.jpg" alt="Modern Treatment Room" />
             <div className="overlay">
-              <div style={{ position: "absolute", bottom: "20px", left: "20px", color: "white" }}>
-                <div style={{ fontSize: "16px", fontWeight: 600, fontFamily: "Cormorant Garamond, serif" }}>Modern Treatment Room</div>
+              <div style={{ position: "absolute", bottom: "18px", left: "18px", color: "white" }}>
+                <div style={{ fontSize: "15px", fontWeight: 600, fontFamily: "Cormorant Garamond, serif" }}>Modern Treatment Room</div>
               </div>
             </div>
           </div>
-          <div className="gallery-item" style={{ gridRow: "1 / 2", gridColumn: "2 / 3" }}>
+          <div className="gallery-item">
+            <img src="/clinic-interior-2.jpg" alt="Clinic Interior" />
+            <div className="overlay">
+              <div style={{ position: "absolute", bottom: "14px", left: "14px", color: "white" }}>
+                <div style={{ fontSize: "13px", fontWeight: 600 }}>Clinic Interior</div>
+              </div>
+            </div>
+          </div>
+          <div className="gallery-item">
+            <img src="/clinic-interior-3.jpg" alt="Treatment Chairs" />
+            <div className="overlay">
+              <div style={{ position: "absolute", bottom: "14px", left: "14px", color: "white" }}>
+                <div style={{ fontSize: "13px", fontWeight: 600 }}>Treatment Chairs</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Row 2: 2 left + large right */}
+        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1.4fr", gridTemplateRows: "300px", gap: "16px" }} className="gallery-row reveal delay-200">
+          <div className="gallery-item">
             <img src="/dental-procedure.jpg" alt="Expert Care" />
             <div className="overlay">
-              <div style={{ position: "absolute", bottom: "16px", left: "16px", color: "white" }}>
-                <div style={{ fontSize: "14px", fontWeight: 600 }}>Expert Care</div>
+              <div style={{ position: "absolute", bottom: "14px", left: "14px", color: "white" }}>
+                <div style={{ fontSize: "13px", fontWeight: 600 }}>Expert Care</div>
               </div>
             </div>
           </div>
-          <div className="gallery-item" style={{ gridRow: "1 / 2", gridColumn: "3 / 4" }}>
+          <div className="gallery-item">
             <img src="/doctor-photo.jpg" alt="Dr. Ziauddin Qazi" style={{ objectPosition: "center top" }} />
             <div className="overlay">
-              <div style={{ position: "absolute", bottom: "16px", left: "16px", color: "white" }}>
-                <div style={{ fontSize: "14px", fontWeight: 600 }}>Dr. Ziauddin Qazi</div>
+              <div style={{ position: "absolute", bottom: "14px", left: "14px", color: "white" }}>
+                <div style={{ fontSize: "13px", fontWeight: 600 }}>Dr. Ziauddin Qazi</div>
               </div>
             </div>
           </div>
-          <div className="gallery-item" style={{ gridRow: "2 / 3", gridColumn: "2 / 4" }}>
+          <div className="gallery-item">
             <img src="/clinic-exterior.jpg" alt="Welcare Dental Hub" />
             <div className="overlay">
-              <div style={{ position: "absolute", bottom: "16px", left: "16px", color: "white" }}>
-                <div style={{ fontSize: "16px", fontWeight: 600, fontFamily: "Cormorant Garamond, serif" }}>Welcare Dental Hub — Our Clinic</div>
+              <div style={{ position: "absolute", bottom: "18px", left: "18px", color: "white" }}>
+                <div style={{ fontSize: "15px", fontWeight: 600, fontFamily: "Cormorant Garamond, serif" }}>Welcare Dental Hub — Our Clinic</div>
               </div>
             </div>
           </div>
@@ -516,9 +530,12 @@ function Gallery() {
       </div>
       <style>{`
         @media (max-width: 768px) {
-          .gallery-grid { grid-template-columns: 1fr 1fr !important; grid-template-rows: 200px 200px 200px !important; }
-          .gallery-grid > *:first-child { grid-row: auto !important; grid-column: auto !important; }
-          .gallery-grid > *:last-child { grid-row: auto !important; grid-column: auto !important; }
+          .gallery-row { grid-template-columns: 1fr 1fr !important; grid-template-rows: 180px !important; }
+          .gallery-row > *:last-child:nth-child(3) { grid-column: 1 / -1; }
+        }
+        @media (max-width: 480px) {
+          .gallery-row { grid-template-columns: 1fr !important; grid-template-rows: 200px !important; }
+          .gallery-row > *:last-child:nth-child(3) { grid-column: auto; }
         }
       `}</style>
     </section>
