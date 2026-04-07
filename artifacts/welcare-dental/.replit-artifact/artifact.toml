@@ -1,0 +1,31 @@
+kind = "web"
+previewPath = "/"
+title = "Welcare Dental Hub"
+version = "1.0.0"
+id = "artifacts/welcare-dental"
+router = "path"
+
+[[integratedSkills]]
+name = "react-vite"
+version = "1.0.0"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 24429
+
+[services.development]
+run = "pnpm --filter @workspace/welcare-dental run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/welcare-dental", "run", "build" ]
+publicDir = "artifacts/welcare-dental/dist/public"
+serve = "static"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "24429"
+BASE_PATH = "/"
